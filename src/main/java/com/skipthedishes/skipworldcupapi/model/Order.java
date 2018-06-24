@@ -3,12 +3,17 @@
  */
 package com.skipthedishes.skipworldcupapi.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -18,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
  *
  */
 @Entity
-@Table(name = "order")
+@Table(name = "command")
 public class Order {
     @Id
     @GeneratedValue
@@ -35,7 +40,8 @@ public class Order {
     @Column(nullable = true)
     private String seatNumber;
 
-    // private Set<OrderItem> orderItems = new HashSet<>();
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<OrderItem> orderItems = new HashSet<>();
 
     /**
      * @return the id
@@ -82,20 +88,20 @@ public class Order {
 	this.status = status;
     }
 
-    // /**
-    // * @return the orderItems
-    // */
-    // public Set<OrderItem> getOrderItems() {
-    // return orderItems;
-    // }
-    //
-    // /**
-    // * @param orderItems
-    // * the orderItems to set
-    // */
-    // public void setOrderItems(Set<OrderItem> orderItems) {
-    // this.orderItems = orderItems;
-    // }
+    /**
+     * @return the orderItems
+     */
+    public Set<OrderItem> getOrderItems() {
+	return orderItems;
+    }
+
+    /**
+     * @param orderItems
+     *            the orderItems to set
+     */
+    public void setOrderItems(Set<OrderItem> orderItems) {
+	this.orderItems = orderItems;
+    }
 
     /**
      * @return the seatNumber

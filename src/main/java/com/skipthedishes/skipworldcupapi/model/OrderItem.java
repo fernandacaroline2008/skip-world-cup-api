@@ -17,16 +17,16 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "order_item")
+@Table(name = "command_item")
 public class OrderItem {
 
     @Id
     @GeneratedValue
-    @Column(name = "order_product_id")
+    @Column(name = "command_product_id")
     private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "command_id")
     private Order order;
 
     @ManyToOne(cascade = CascadeType.ALL)
