@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
  *
  */
 @Entity
-@Table(name = "command")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue

@@ -20,4 +20,8 @@ public interface OrderService {
     List<Order> findByStatus(String status);
 
     Order findById(Long id);
+
+    void updateStatus(Long id, String status);
+
+    void update(Order order);
 }

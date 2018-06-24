@@ -63,4 +63,16 @@ public class OrderController {
 
 	return new ResponseEntity<>(order, HttpStatus.OK);
     }
+
+    @PostMapping("{id}/updateStatus/{status}")
+    public ResponseEntity<Order> cancel(@PathVariable Long id, @PathVariable String status) {
+	if (orderService.findById(id) == null) {
+	    LOG.debug("Order ID {} not found.", id);
+	    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+
+	orderService.updateStatus(id, status);
+
+	return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }

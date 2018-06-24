@@ -11,9 +11,9 @@ INSERT INTO client (id, name) VALUES (2, 'Heitor Morgado');
 INSERT INTO client (id, name) VALUES (3, 'Mateus Tavares');
 INSERT INTO client (id, name) VALUES (4, 'John');
 
-INSERT INTO command (id, client_id, status, seat_number) VALUES (1, 1, 1, 'A1');
-INSERT INTO command (id, client_id, status, seat_number) VALUES (2, 1, 1, 'A1');
-INSERT INTO command (id, client_id, status, seat_number) VALUES (3, 2, 2, 'A2');
-INSERT INTO command (id, client_id, status, seat_number) VALUES (4, 3, 3, 'A3');
-INSERT INTO command (id, client_id, status, seat_number) VALUES (5, 4, 4, 'A4');
+INSERT INTO orders (id, client_id, status, seat_number) VALUES (1, 1, 1, 'A1');
+INSERT INTO orders (id, client_id, status, seat_number) VALUES (2, 1, 1, 'A1');
+INSERT INTO orders (id, client_id, status, seat_number) VALUES (3, 2, 2, 'A2');
+INSERT INTO orders (id, client_id, status, seat_number) VALUES (4, 3, 3, 'A3');
+INSERT INTO orders (id, client_id, status, seat_number) VALUES (5, 4, 4, 'A4');
 

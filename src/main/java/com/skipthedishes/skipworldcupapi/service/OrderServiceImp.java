@@ -27,7 +27,7 @@ public class OrderServiceImp implements OrderService {
     @Transactional
     public void create(Order order) {
 	order.setStatus(OrderStatus.ORDERED);
-	orderRepository.save(order);
+	update(order);
     }
 
     @Override
@@ -43,6 +43,19 @@ public class OrderServiceImp implements OrderService {
     @Override
     public List<Order> findByStatus(String status) {
 	return orderRepository.findByStatus(OrderStatus.fromString(status));
+    }
+
+    @Override
+    public void updateStatus(Long id, String status) {
+	Order order = findById(id);
+	order.setStatus(OrderStatus.fromString(status));
+	update(order);
+    }
+
+    @Override
+    @Transactional
+    public void update(Order order) {
+	orderRepository.save(order);
     }
 
 }
