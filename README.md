@@ -39,7 +39,7 @@ $ mvn clean spring-boot:run
 
 You can test API in http://localhost:8080/swagger-ui.html
 
-![Screenshot](swagger1.png)
+![Screenshot](swagger2.png)
 ![Screenshot](swagger.png)
 
 
