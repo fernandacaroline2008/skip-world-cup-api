@@ -3,17 +3,15 @@
  */
 package com.skipthedishes.skipworldcupapi.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 /**
  * @author fcsantos
@@ -26,70 +24,92 @@ public class Order {
     @GeneratedValue
     private Long id;
 
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    @JsonBackReference
     private Client client;
 
     @Column(nullable = false)
     private OrderStatus status;
 
-    @OneToMany(mappedBy = "products", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Product> products;
+    @Column(nullable = true)
+    private String seatNumber;
+
+    // private Set<OrderItem> orderItems = new HashSet<>();
 
     /**
      * @return the id
      */
     public Long getId() {
-        return id;
+	return id;
     }
 
     /**
-     * @param id the id to set
+     * @param id
+     *            the id to set
      */
     public void setId(Long id) {
-        this.id = id;
+	this.id = id;
     }
 
     /**
      * @return the client
      */
     public Client getClient() {
-        return client;
+	return client;
     }
 
     /**
-     * @param client the client to set
+     * @param client
+     *            the client to set
      */
     public void setClient(Client client) {
-        this.client = client;
+	this.client = client;
     }
 
     /**
      * @return the status
      */
     public OrderStatus getStatus() {
-        return status;
+	return status;
     }
 
     /**
-     * @param status the status to set
+     * @param status
+     *            the status to set
      */
     public void setStatus(OrderStatus status) {
-        this.status = status;
+	this.status = status;
+    }
+
+    // /**
+    // * @return the orderItems
+    // */
+    // public Set<OrderItem> getOrderItems() {
+    // return orderItems;
+    // }
+    //
+    // /**
+    // * @param orderItems
+    // * the orderItems to set
+    // */
+    // public void setOrderItems(Set<OrderItem> orderItems) {
+    // this.orderItems = orderItems;
+    // }
+
+    /**
+     * @return the seatNumber
+     */
+    public String getSeatNumber() {
+	return seatNumber;
     }
 
     /**
-     * @return the products
+     * @param seatNumber
+     *            the seatNumber to set
      */
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    /**
-     * @param products the products to set
-     */
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setSeatNumber(String seatNumber) {
+	this.seatNumber = seatNumber;
     }
 
 }

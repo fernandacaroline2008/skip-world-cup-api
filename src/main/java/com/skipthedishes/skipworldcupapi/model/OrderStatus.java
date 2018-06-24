@@ -5,5 +5,5 @@ package com.skipthedishes.skipworldcupapi.model;
  *
  */
 public enum OrderStatus {
-    IN_PROGRESS, COMPLETED, CANCELLED
+    ORDERED, IN_PROGRESS, DELIVERING, COMPLETED, CANCELLED
 }
