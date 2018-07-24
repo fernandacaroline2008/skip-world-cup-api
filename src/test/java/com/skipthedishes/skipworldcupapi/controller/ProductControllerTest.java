@@ -13,7 +13,6 @@ import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -21,8 +20,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
-import com.skipthedishes.skipworldcupapi.service.ProductService;
 
 /**
  * @author fcsantos
@@ -38,9 +35,6 @@ public class ProductControllerTest {
 
     @Autowired
     private WebApplicationContext context;
-
-    @Mock
-    private ProductService productService;
 
     @Before
     public void setup() {
@@ -70,7 +64,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void findById_withInvalidId_shouldReturnProduct() throws Exception {
+    public void findById_withInvalidId_shouldReturnNotFound() throws Exception {
 	mockMvc.perform(get(PRODUCT_BASE_URI + "/{id}", INVALID_PRODUCT_ID)).andExpect(status().isNotFound());
     }
 
